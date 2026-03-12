@@ -5,7 +5,7 @@ pipeline {
 
         stage('Checkout Code') {
             steps {
-                git url: 'https://github.com/username/sample-project.git',
+                git url: 'https://github.com/Ranjana-bv/muli_branch_pipeline.git',
                     branch: "${env.BRANCH_NAME}"
             }
         }
