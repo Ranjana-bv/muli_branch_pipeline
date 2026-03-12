@@ -1,0 +1,43 @@
+pipeline {
+    agent any
+
+    stages {
+
+        stage('Checkout Code') {
+            steps {
+                git url: 'https://github.com/username/sample-project.git',
+                    branch: "${env.BRANCH_NAME}"
+            }
+        }
+
+        stage('Dev Branch Steps') {
+            when {
+                branch 'dev'
+            }
+            steps {
+                sh 'echo Running commands for DEV branch'
+                sh 'developing'
+            }
+        }
+
+        stage('Main Branch Steps') {
+            when {
+                branch 'main'
+            }
+            steps {
+                sh 'echo Running commands for MAIN branch'
+                sh 'uptime'
+            }
+        }
+
+        stage('test Branch Steps') {
+            when {
+                branch 'test'
+            }
+            steps {
+                sh 'echo Running commands for Test branch'
+                sh 'Testing'
+            }
+        }
+    }
+}
